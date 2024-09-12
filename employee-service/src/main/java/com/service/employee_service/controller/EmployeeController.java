@@ -18,5 +18,13 @@ public class EmployeeController {
 
         return this.employeeService.getEmployeeById(id);
     }
-
+    @PutMapping("/update")
+    public Employee updateEmployee(@RequestParam(name = "id") int id , @RequestBody Employee employee){
+        System.out.println("updated");
+        return this.employeeService.updateEmployeeById(id,employee);
+    }
+    @DeleteMapping("/delete")
+    public Employee deleteEmployee(@RequestParam(name = "id") int id,@RequestBody Employee employee){
+        return this.employeeService.deleteEmployeeById(id,employee);
+    }
 }

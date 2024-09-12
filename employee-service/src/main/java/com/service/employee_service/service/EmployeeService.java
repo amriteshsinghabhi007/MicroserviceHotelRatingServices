@@ -1,10 +1,8 @@
 package com.service.employee_service.service;
 
 import com.service.employee_service.dao.Employee;
-import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,10 +20,27 @@ public class EmployeeService {
         this.employeeId=employeeIds;
     }
     public void newEmployee(Employee employee){
-        this.employeeId.put(employee.getId(),employee);
-
+        if(employeeId.containsKey(employee.getId())) {
+            System.out.println("Id present in Inner DB");
+            this.employeeId.get(employeeId);
+        }else {
+            this.employeeId.put(employee.getId(), employee);
+        }
     }
     public Employee getEmployeeById(int id){
         return this.employeeId.get(id);
+    }
+    public Employee updateEmployeeById(int id,Employee employee){
+        if(employeeId.containsKey(id)){
+            return this.employeeId.put(id,employee);
+        }
+        return employee;
+    }
+    public Employee deleteEmployeeById(int id, Employee employee){
+            if(employeeId.containsKey(id))
+            {
+                return this.employeeId.remove(id);
+            }
+            return employee;
     }
 }
