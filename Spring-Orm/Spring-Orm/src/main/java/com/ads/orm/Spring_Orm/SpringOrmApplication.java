@@ -1,6 +1,5 @@
 package com.ads.orm.Spring_Orm;
 
-import com.ads.orm.Spring_Orm.Repositories.UserRepositories;
 import com.ads.orm.Spring_Orm.entity.User;
 import com.ads.orm.Spring_Orm.services.UserService;
 import org.slf4j.Logger;
@@ -23,21 +22,21 @@ public class SpringOrmApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		User user = new User();
-//		user.setAge(25);
-//		user.setCity("delhi");
-//		user.setName("Amri");
-//		User userSaved = userService.saveUser(user);
-//		System.out.println(userSaved);
+		User user = new User();
+		user.setAge(25);
+		user.setCity("delhi");
+		user.setName("Amri");
+		User userSaved = userService.saveUser(user);
+		System.out.println(userSaved);
 
 //		//Get Single User
 //		User user = userService.getSingleUser(3);
 //		logger.info("User found {}", user);
-
-		//Get All User
+//
+//		//Get All User
 //		List<User> user= userService.getAllUser();
 //		logger.info("User get {}",user);
-
+//
 //		//Update users
 //		User user = new User();
 //		user.setCity("Azamgarh");
@@ -45,8 +44,8 @@ public class SpringOrmApplication implements CommandLineRunner {
 //		user.setName("Suraj");
 //		User userUpdate = userService.updateUser(user,1);
 //		logger.info("Updated user {}",userUpdate);
-
-		//Delete User
-		userService.deleteUser(2);
+//
+//		//Delete User
+//		userService.deleteUser(2);
 	}
 }

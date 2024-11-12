@@ -1,6 +1,6 @@
 package com.ads.orm.Spring_Orm.services.impl;
 
-import com.ads.orm.Spring_Orm.Repositories.UserRepositories;
+import com.ads.orm.Spring_Orm.repositories.UserRepositories;
 import com.ads.orm.Spring_Orm.entity.User;
 import com.ads.orm.Spring_Orm.services.UserService;
 import org.slf4j.Logger;
