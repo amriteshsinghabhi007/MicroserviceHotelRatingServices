@@ -1,8 +1,10 @@
-package com.ads.electronic.store.ElectronicStore.services;
+package com.ads.electronic.store.ElectronicStore.services.impl;
 
 import com.ads.electronic.store.ElectronicStore.dtos.UserDto;
 import com.ads.electronic.store.ElectronicStore.entity.User;
+import com.ads.electronic.store.ElectronicStore.exception.ResourceNotFoundException;
 import com.ads.electronic.store.ElectronicStore.repositories.UserRepositories;
+import com.ads.electronic.store.ElectronicStore.services.UserServices;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserServices{
+public class UserServiceImpl implements UserServices {
     @Autowired
    private UserRepositories userRepositories;
     @Autowired
@@ -33,7 +35,7 @@ public class UserServiceImpl implements UserServices{
 
     @Override
     public UserDto userUpdate(UserDto userDto, String userId) {
-        User user = userRepositories.findById(userId).orElseThrow(()->new RuntimeException("User not found Exception"));
+        User user = userRepositories.findById(userId).orElseThrow(()->new ResourceNotFoundException("User not found!!"));
         user.setName(userDto.getName());
         user.setGender(userDto.getGender());
         user.setPassword(userDto.getPassword());
@@ -47,14 +49,14 @@ public class UserServiceImpl implements UserServices{
 
     @Override
     public void userDelete(String userId) {
-        User user = userRepositories.findById(userId).orElseThrow(()->new RuntimeException("User not found Exception"));
+        User user = userRepositories.findById(userId).orElseThrow(()->new ResourceNotFoundException("User not found for Delete!!"));
         //delete user
         userRepositories.delete(user);
     }
 
     @Override
     public UserDto getSingleUser(String userId) {
-        User user = userRepositories.findById(userId).orElseThrow(()->new RuntimeException("User not found Exception"));
+        User user = userRepositories.findById(userId).orElseThrow(()->new ResourceNotFoundException("User not get from the userId!!"));
         return entityToDto(user);
     }
 
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserServices{
 
     @Override
     public UserDto getUserByEmail(String emailId) {
-        User userEmail = userRepositories.findByEmail(emailId).orElseThrow(()->new RuntimeException("EmailId not found"));
+        User userEmail = userRepositories.findByEmail(emailId).orElseThrow(()->new ResourceNotFoundException("User not found with this email Id!!"));
         return entityToDto(userEmail);
     }
 
