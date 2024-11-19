@@ -1,6 +1,7 @@
 package com.ads.electronic.store.ElectronicStore.controller;
 
 import com.ads.electronic.store.ElectronicStore.dtos.ApiResponseMessage;
+import com.ads.electronic.store.ElectronicStore.dtos.PageableResponse;
 import com.ads.electronic.store.ElectronicStore.dtos.UserDto;
 import com.ads.electronic.store.ElectronicStore.services.UserServices;
 import jakarta.validation.Valid;
@@ -40,8 +41,13 @@ public class UserController {
     }
      // get All user
     @GetMapping
-    public ResponseEntity<List<UserDto>> getAllUser(){
-        return new ResponseEntity<>(userServices.getAllUser(),HttpStatus.OK);
+    public ResponseEntity<PageableResponse<UserDto>> getAllUser(
+            @RequestParam (value = "pageNumber",defaultValue = "0",required = false) int pageNumber,
+            @RequestParam(value = "pageSize",defaultValue = "10",required = false) int pageSize,
+            @RequestParam(value = "sortBy",defaultValue = "name",required = false) String sortBy,
+            @RequestParam(value = "sortDir",defaultValue = "asc",required = false) String sortDir
+    ){
+        return new ResponseEntity<>(userServices.getAllUser(pageNumber,pageSize,sortBy,sortDir),HttpStatus.OK);
     }
     //Get single user by Id
     @GetMapping("/{userId}")

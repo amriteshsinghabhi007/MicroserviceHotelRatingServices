@@ -1,5 +1,6 @@
 package com.ads.electronic.store.ElectronicStore.services;
 
+import com.ads.electronic.store.ElectronicStore.dtos.PageableResponse;
 import com.ads.electronic.store.ElectronicStore.dtos.UserDto;
 import com.ads.electronic.store.ElectronicStore.entity.User;
 
@@ -15,7 +16,7 @@ public interface UserServices {
     //get single id
     public UserDto getSingleUser(String userId);
     //get all
-    public List<UserDto> getAllUser();
+    public PageableResponse<UserDto> getAllUser(int pageNumber, int pageSize, String sortBy, String sortDir);
     //get email id
     public UserDto getUserByEmail(String emailId);
 
