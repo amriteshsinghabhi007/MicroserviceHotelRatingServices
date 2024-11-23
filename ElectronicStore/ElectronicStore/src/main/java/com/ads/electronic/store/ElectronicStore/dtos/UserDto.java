@@ -17,7 +17,7 @@ public class UserDto {
     private String name;
     @NotBlank(message = "Gender Is Blank")
     private String gender;
-    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = "Email is not vaid")
+    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$",message = "Email is not vaild")
     @NotBlank(message = "Email id required !!")
     private String email;
     @NotBlank(message = "Password is required !!")
